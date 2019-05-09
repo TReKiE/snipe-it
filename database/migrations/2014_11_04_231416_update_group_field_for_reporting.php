@@ -18,9 +18,12 @@ class UpdateGroupFieldForReporting extends Migration {
 		// 	//
 		// });
 
-    DB::update('update '.DB::getTablePrefix().'groups set permissions = ? where id = ?', ['{"admin":1,"users":1,"reports":1}', 1]);
-
-    DB::update('update '.DB::getTablePrefix().'groups set permissions = ? where id = ?', ['{"users":1,"reports":1}', 2]);
+		DB::table(DB::getTablePrefix() . 'groups')
+		->where('id', 1)
+		->update(['permissions' => '{"admin":1,"users":1,"reports":1}']);
+		DB::table(DB::getTablePrefix() . 'groups')
+		->where('id', 2)
+		->update(['permissions' => '{"users":1,"reports":1}']);
 
       // DB::statement('UPDATE '.$prefix.'groups SET permissions="{\"admin\":1,\"users\":1,\"reports\":1}" where id=1');
       // DB::statement('UPDATE '.$prefix.'groups SET permissions="{\"users\":1,\"reports\":1}" where id=2');

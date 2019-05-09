@@ -228,8 +228,8 @@
         }
 
         function processFile(dataURL, fileType) {
-            var maxWidth = 800;
-            var maxHeight = 800;
+            var maxWidth = 2100;
+            var maxHeight = 2100;
 
             var image = new Image();
             image.src = dataURL;
